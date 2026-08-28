@@ -16,7 +16,6 @@
     html, body { overflow-x: hidden; max-width: 100%; }
     body { margin: 0; font-family: "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif; background: #f4f1ea; color: #222; }
     .header { position: relative; overflow: hidden; background: linear-gradient(135deg, #11203f 0%, #1a2f57 100%); padding: 28px 24px 60px; color: #fff; }
-    .sun { position: absolute; top: -70px; right: -60px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle at 40% 40%, #f2b155, #b9793a 70%); opacity: 0.9; }
     .header-inner { position: relative; z-index: 1; }
     .brand { margin: 0 0 6px; font-size: 12px; letter-spacing: 2px; color: #e8b45a; font-weight: 600; }
     .title { margin: 0 0 6px; font-size: 26px; font-weight: 800; }
@@ -34,28 +33,32 @@
     .btn-secondary { background: #eef0f4; color: #333; }
     .btn-primary { background: #2b3a5c; color: #fff; }
     .btn-primary:disabled { opacity: 0.5; cursor: default; }
-    .weekday-row { display: grid; grid-template-columns: repeat(7, 1fr); padding: 4px 2px; font-size: 12px; font-weight: 700; color: #666; }
-    .weekday { text-align: left; padding-left: 4px; }
-    .weekday.sun { color: #c0392b; }
-    .weekday.sat { color: #2f5aa8; }
-    .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
-    .day-cell { min-height: 90px; min-width: 0; border: 1px solid #eee; border-radius: 10px; padding: 6px; background: #fff; }
-    .day-cell.empty { background: transparent; border: none; }
-    .day-cell.today { border-color: #2b3a5c; }
-    .day-num { font-size: 12px; font-weight: 700; margin-bottom: 4px; color: #333; }
-    .day-num.sun { color: #c0392b; }
-    .day-num.sat { color: #2f5aa8; }
-    .entry-row { display: flex; justify-content: space-between; align-items: center; font-size: 10px; padding: 2px 4px; border-radius: 5px; margin-bottom: 2px; cursor: pointer; background: #eef7ee; min-width: 0; }
-    .entry-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #234; min-width: 0; }
-    .entry-status { font-weight: 700; padding: 1px 5px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; }
-    .status-출근 { background: #eaf7ec; } .status-출근 .entry-status { color: #2e9e5b; }
-    .status-출장 { background: #e8f0fb; } .status-출장 .entry-status { color: #2f5aa8; }
-    .status-연차 { background: #fdf2e3; } .status-연차 .entry-status { color: #b8720b; }
-    .status-교육 { background: #f2ecfa; } .status-교육 .entry-status { color: #7748b8; }
-    .status-반차 { background: #fbe8f2; } .status-반차 .entry-status { color: #c23a7a; }
-    .status-휴무 { background: #f1f1f1; } .status-휴무 .entry-status { color: #888; }
 
-    .legend { display: flex; flex-wrap: wrap; gap: 12px; padding: 12px 4px 4px; font-size: 12px; color: #444; border-top: 1px solid #f0f0f0; margin-top: 8px; }
+    .hint { font-size: 11px; color: #999; margin: 0 0 8px; }
+
+    .schedule-scroll { overflow-x: auto; border: 1px solid #eee; border-radius: 10px; -webkit-overflow-scrolling: touch; }
+    .schedule-table { border-collapse: collapse; width: max-content; min-width: 100%; font-size: 11px; }
+    .schedule-table th, .schedule-table td { border: 1px solid #eee; padding: 6px 3px; text-align: center; white-space: nowrap; }
+    .schedule-table thead th { background: #f7f7f5; font-weight: 700; }
+    .day-head-num { display: block; font-size: 11px; }
+    .day-head-wd { display: block; font-size: 9px; color: #999; font-weight: 400; }
+    .day-head-wd.sun { color: #c0392b; }
+    .day-head-wd.sat { color: #2f5aa8; }
+    .day-col { min-width: 30px; }
+    .day-col.today { background: #eef2fb; }
+
+    .sticky-col { position: sticky; left: 0; z-index: 2; background: #fff; text-align: left; padding-left: 10px; font-weight: 600; min-width: 92px; }
+    .schedule-table thead .sticky-col { background: #f7f7f5; z-index: 3; }
+
+    .sched-cell { cursor: pointer; font-weight: 700; }
+    .status-출근 { background: #eaf7ec; color: #2e9e5b; }
+    .status-출장 { background: #e8f0fb; color: #2f5aa8; }
+    .status-연차 { background: #fdf2e3; color: #b8720b; }
+    .status-교육 { background: #f2ecfa; color: #7748b8; }
+    .status-반차 { background: #fbe8f2; color: #c23a7a; }
+    .status-휴무 { background: #f1f1f1; color: #888; }
+
+    .legend { display: flex; flex-wrap: wrap; gap: 12px; padding: 12px 4px 4px; font-size: 12px; color: #444; }
     .legend-item { display: flex; align-items: center; gap: 4px; }
     .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
     .dot-출근 { background: #2e9e5b; }
@@ -74,12 +77,10 @@
     .summary td:first-child, .summary th:first-child { text-align: left; font-weight: 600; }
 
     .install-banner { position: fixed; left: 12px; right: 12px; bottom: 16px; background: #11203f; color: #fff; border-radius: 12px; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 13px; box-shadow: 0 8px 24px rgba(0,0,0,0.25); z-index: 10; }
-    @media (max-width: 420px) { .day-cell { min-height: 78px; } .entry-row { font-size: 9px; } }
   </style>
 </head>
 <body>
   <header class="header">
-    <div class="sun"></div>
     <div class="header-inner">
       <p class="brand">HAEMI / YONGSEONG SOLAR</p>
       <h1 class="title">월간 근무계획표</h1>
@@ -101,17 +102,18 @@
       </div>
     </div>
 
-    <div class="weekday-row">
-      <span class="weekday sun">일</span>
-      <span class="weekday">월</span>
-      <span class="weekday">화</span>
-      <span class="weekday">수</span>
-      <span class="weekday">목</span>
-      <span class="weekday">금</span>
-      <span class="weekday sat">토</span>
-    </div>
+    <p class="hint">← 좌우로 스크롤하면 날짜 전체를 볼 수 있어요. 칸을 탭하면 상태가 바뀝니다.</p>
 
-    <div id="calendarGrid" class="calendar-grid"></div>
+    <div class="schedule-scroll">
+      <table class="schedule-table" id="scheduleTable">
+        <thead>
+          <tr id="scheduleHeadRow">
+            <th class="sticky-col">직원</th>
+          </tr>
+        </thead>
+        <tbody id="scheduleBody"></tbody>
+      </table>
+    </div>
 
     <div class="legend">
       <span class="legend-item"><i class="dot dot-출근"></i>출근</span>
@@ -153,18 +155,20 @@
     const GAS_API_URL = "https://script.google.com/macros/s/AKfycbzzmvnHfEQUDdZx3Zsw1x7uKjCMa-0fulRuhzOcgQr2S89PoMFEu-Zq2H7ijt_tVjtV/exec";
     const DEFAULT_EMPLOYEES = ["김선천소장", "손삼영실장", "황인용소장", "공석희실장"];
     const STATUS_CYCLE = ["출근", "출장", "연차", "교육", "반차", "휴무"];
+    const WEEKDAY_LABELS = ["일", "월", "화", "수", "목", "금", "토"];
 
     let currentDate = new Date();
     let monthData = {};
     let dirty = false;
 
     const monthLabel = document.getElementById("monthLabel");
-    const calendarGrid = document.getElementById("calendarGrid");
     const statusText = document.getElementById("statusText");
     const saveBtn = document.getElementById("saveBtn");
     const mailBtn = document.getElementById("mailBtn");
     const prevBtn = document.getElementById("prevMonth");
     const nextBtn = document.getElementById("nextMonth");
+    const scheduleHeadRow = document.getElementById("scheduleHeadRow");
+    const scheduleBody = document.getElementById("scheduleBody");
     const summaryBody = document.getElementById("summaryBody");
 
     function monthKey(date) {
@@ -175,6 +179,16 @@
 
     function defaultDayEntries() {
       return DEFAULT_EMPLOYEES.map((name) => ({ name, status: "출근" }));
+    }
+
+    function getEntry(day, name) {
+      if (!monthData[day]) monthData[day] = defaultDayEntries();
+      let entry = monthData[day].find((e) => e.name === name);
+      if (!entry) {
+        entry = { name, status: "출근" };
+        monthData[day].push(entry);
+      }
+      return entry;
     }
 
     async function loadMonth() {
@@ -196,7 +210,7 @@
       } finally {
         saveBtn.disabled = false;
         dirty = false;
-        renderCalendar();
+        renderAll();
       }
     }
 
@@ -244,71 +258,59 @@
       });
     }
 
-    function renderCalendar() {
+    function renderSchedule() {
       const year = currentDate.getFullYear();
       const month = currentDate.getMonth();
-      monthLabel.textContent = `${year}년 ${month + 1}월`;
-
-      const firstDay = new Date(year, month, 1).getDay();
       const daysInMonth = new Date(year, month + 1, 0).getDate();
       const today = new Date();
 
-      calendarGrid.innerHTML = "";
-
-      for (let i = 0; i < firstDay; i++) {
-        const empty = document.createElement("div");
-        empty.className = "day-cell empty";
-        calendarGrid.appendChild(empty);
+      scheduleHeadRow.innerHTML = '<th class="sticky-col">직원</th>';
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dow = new Date(year, month, day).getDay();
+        const isToday = today.getFullYear() === year && today.getMonth() === month && today.getDate() === day;
+        const th = document.createElement("th");
+        th.className = "day-col" + (isToday ? " today" : "");
+        th.innerHTML = `<span class="day-head-num">${day}</span><span class="day-head-wd ${dow === 0 ? "sun" : dow === 6 ? "sat" : ""}">${WEEKDAY_LABELS[dow]}</span>`;
+        scheduleHeadRow.appendChild(th);
       }
 
-      for (let day = 1; day <= daysInMonth; day++) {
-        const cell = document.createElement("div");
-        const dow = new Date(year, month, day).getDay();
-        cell.className = "day-cell";
+      scheduleBody.innerHTML = "";
+      DEFAULT_EMPLOYEES.forEach((name) => {
+        const tr = document.createElement("tr");
+        const nameTd = document.createElement("td");
+        nameTd.className = "sticky-col";
+        nameTd.textContent = name;
+        tr.appendChild(nameTd);
 
-        const isToday = today.getFullYear() === year && today.getMonth() === month && today.getDate() === day;
-        if (isToday) cell.classList.add("today");
+        for (let day = 1; day <= daysInMonth; day++) {
+          const entry = getEntry(day, name);
+          const isToday = today.getFullYear() === year && today.getMonth() === month && today.getDate() === day;
+          const td = document.createElement("td");
+          td.className = `sched-cell day-col status-${entry.status}` + (isToday ? " today" : "");
+          td.textContent = entry.status.slice(0, 1);
+          td.title = `${day}일 · ${name} · ${entry.status}`;
 
-        const numEl = document.createElement("div");
-        numEl.className = "day-num" + (dow === 0 ? " sun" : dow === 6 ? " sat" : "");
-        numEl.textContent = day;
-        cell.appendChild(numEl);
-
-        if (!monthData[day]) {
-          monthData[day] = defaultDayEntries();
-        }
-
-        monthData[day].forEach((entry, idx) => {
-          const row = document.createElement("div");
-          row.className = `entry-row status-${entry.status}`;
-
-          const nameEl = document.createElement("span");
-          nameEl.className = "entry-name";
-          nameEl.textContent = entry.name;
-
-          const statusEl = document.createElement("span");
-          statusEl.className = "entry-status";
-          statusEl.textContent = entry.status;
-
-          row.appendChild(nameEl);
-          row.appendChild(statusEl);
-
-          row.addEventListener("click", () => {
+          td.addEventListener("click", () => {
             const curIdx = STATUS_CYCLE.indexOf(entry.status);
-            const nextStatus = STATUS_CYCLE[(curIdx + 1) % STATUS_CYCLE.length];
-            monthData[day][idx].status = nextStatus;
+            entry.status = STATUS_CYCLE[(curIdx + 1) % STATUS_CYCLE.length];
             dirty = true;
             statusText.textContent = "저장되지 않은 변경사항이 있습니다";
             statusText.className = "status-text saving";
-            renderCalendar();
+            renderAll();
           });
 
-          cell.appendChild(row);
-        });
+          tr.appendChild(td);
+        }
 
-        calendarGrid.appendChild(cell);
-      }
+        scheduleBody.appendChild(tr);
+      });
+    }
 
+    function renderAll() {
+      const year = currentDate.getFullYear();
+      const month = currentDate.getMonth();
+      monthLabel.textContent = `${year}년 ${month + 1}월`;
+      renderSchedule();
       renderSummary();
     }
 
