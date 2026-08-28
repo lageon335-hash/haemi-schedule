@@ -1,4 +1,4 @@
-const CACHE_NAME = "haemi-schedule-v7";
+const CACHE_NAME = "haemi-schedule-v9";
 
 const STATIC_ASSETS = ["./", "./index.html", "./manifest.json"];
 
