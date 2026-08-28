@@ -1,6 +1,6 @@
 {
   "name": "해미/용성솔라 월간 근무계획표",
-  "short_name": "근무계획표",
+  "short_name": "해미/용성솔라 근무계획표",
   "description": "해미/용성솔라 직원 근무·출장·연차·교육 일정 관리",
   "start_url": "./index.html",
   "scope": "./",
