@@ -13,9 +13,10 @@
   <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAFF0lEQVR4nO3dQXLTSBiGYSXhAmxnlT1XmCquMkfJUeYqVHEF9qxmmxNQzIIS5RjFllrd6vbn51mxAFndfvPT1mTIw9TRx+fPP3u+PtP07eXH719/enmqcs3X718eqlyowIejXki892PpvT4q8qZBi5jZaQst425yYSGzRouwq15QyJSoGXaVCwmZGmqE/bj3AmKmlhot7QpazNedPhbjur1NFY14Ia/T4hnvPSk5gmye0GJe53wym9TblbS2KWgxr7c0kUW9zbeXH9N///69qbnVI13MZZYi7nX8KPmCGuVe//rn66pWV/0mMe/TK+oWfyP0uu9PL0+rztRXf4OY6zgq6iOPNUfd/+nrXIta0AdqFfUIZ/NW6zi/7q6gxVxfzahHCPlczbW8d61LUb/7lEPMbdR6+jFizNNUby2XvjAutblYupjbK/2PLqOGvKR0XWv/3NKk3v29HJSZ37TUmKdp2/2W7MeSPwo3ncdzayEvafW473xKm9CDS4h5mo5bx5ugTeexpMQ8a7Ge82ZN6EGlxTxrva7fQZvO40iNeVZ7faftmtCDSY951mqdgh7IvcQ8a7Hex2ly3BjBvcU8q7XuuWETmiiCHsC9TudZzfULurN7j3lWax8ETZQHHwj7MZ3/tPd7PkzoTsS8bO++CJoogu7AdL5sz/4ImiiCJoqgD+a4sU7pPgmaKIImiqAP5LixTcl+CZoogiaKoIki6IM4P5fZum+CJoqgiSJoogiaKB9638CIbumnRfH2/TKhiSJoojhyLHB8uC2n75cJTRRBE0XQRBE0UQR9EB80y2zdN0ETRdBEETRRBH0g5+htSvZL0EQRNFEEfTDHjnVK90nQRBE0UQTdgWPHZXv2R9BEEXQnpvQyPwXrhon6rRr7IWiiCLozU/qXWvsg6AHce9Q11y9oogh6EPc6pWuvW9ADubeoW6xX0IO5l6hbrVPQA0qPuuX6BD2o1Khbr0vQA0uL+oj1CHpwKVEftQ5Bd7T2H1b/9PJ0s2FvufcaPylM0J3Mb96WN/HWot5yvyX7seTh4/Pnn7uuwGZLb9rWWEf+uYc11uL/KbwRtd68Uad1rbWUfsGa0AeqOYmuXfdordax9bqCPkirmNe8TitH3f+W1xH0AY6Kec3r7tXrvte+rqAb6xXzklv6+Yul+ybohkaK+RaV7J+nHI2Ieb+Spx+CbuT8zRBzma37KOiG5s0X8z5b9tEZmigmNFEETRRBE+VD7xugr9PHYAkfXk1oogiaKIImiqCJImiiCJoogiaKoIkiaKIImiiCJoqgieIb/IliQhNF0EQRNFEETRRBE0XQRBE0UQRNFEETRdBEETRRBE0UQRNF0EQRNFEETRRBE0XQRBE0UQRNFEETRdBEETRRBE0UQRNF0EQRNFEETRRBE0XQRBE0UQRNFEETRdBEETRRBE0UQRPl8fX7l4feNwE1vH7/8mBCE0XQRBE0UQRNlMdp+nWY7n0jsMfcsAlNFEET5XfQjh3cqtN2TWiivAnalObWnDdrQhPlj6BNaW7FUqsmNFEWgzalGd17jb47oUXNqC61efHIIWpGc61JZ2iiXA3alGYUa1pcNaFFTW9rG1x95BA1vWxpb9MZWtQcbWtzmz8UipqjlLS2K86Pz59/7vnzsGTP0Nz12M60pra9Te1+Di1qaqnRUtUYHUEoUXMoNpmuwmaNFn+7Nz0uCJslLY+ph51/xX3fjvqs1fUDncgz9XxQ8D9YatuKiI8RuQAAAABJRU5ErkJggg==">
   <style>
     * { box-sizing: border-box; }
+    html, body { overflow-x: hidden; max-width: 100%; }
     body { margin: 0; font-family: "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif; background: #f4f1ea; color: #222; }
     .header { position: relative; overflow: hidden; background: linear-gradient(135deg, #11203f 0%, #1a2f57 100%); padding: 28px 24px 60px; color: #fff; }
-    .sun { position: absolute; top: -60px; right: -40px; width: 220px; height: 220px; border-radius: 50%; background: radial-gradient(circle at 40% 40%, #f2b155, #b9793a 70%); opacity: 0.9; }
+    .sun { position: absolute; top: -70px; right: -60px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle at 40% 40%, #f2b155, #b9793a 70%); opacity: 0.9; }
     .header-inner { position: relative; z-index: 1; }
     .brand { margin: 0 0 6px; font-size: 12px; letter-spacing: 2px; color: #e8b45a; font-weight: 600; }
     .title { margin: 0 0 6px; font-size: 26px; font-weight: 800; }
@@ -38,20 +39,40 @@
     .weekday.sun { color: #c0392b; }
     .weekday.sat { color: #2f5aa8; }
     .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
-    .day-cell { min-height: 90px; border: 1px solid #eee; border-radius: 10px; padding: 6px; background: #fff; }
+    .day-cell { min-height: 90px; min-width: 0; border: 1px solid #eee; border-radius: 10px; padding: 6px; background: #fff; }
     .day-cell.empty { background: transparent; border: none; }
     .day-cell.today { border-color: #2b3a5c; }
     .day-num { font-size: 12px; font-weight: 700; margin-bottom: 4px; color: #333; }
     .day-num.sun { color: #c0392b; }
     .day-num.sat { color: #2f5aa8; }
-    .entry-row { display: flex; justify-content: space-between; align-items: center; font-size: 10px; padding: 2px 4px; border-radius: 5px; margin-bottom: 2px; cursor: pointer; background: #eef7ee; }
-    .entry-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #234; }
-    .entry-status { font-weight: 700; padding: 1px 5px; border-radius: 4px; white-space: nowrap; }
+    .entry-row { display: flex; justify-content: space-between; align-items: center; font-size: 10px; padding: 2px 4px; border-radius: 5px; margin-bottom: 2px; cursor: pointer; background: #eef7ee; min-width: 0; }
+    .entry-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #234; min-width: 0; }
+    .entry-status { font-weight: 700; padding: 1px 5px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; }
     .status-출근 { background: #eaf7ec; } .status-출근 .entry-status { color: #2e9e5b; }
-    .status-연차 { background: #fdf2e3; } .status-연차 .entry-status { color: #b8720b; }
     .status-출장 { background: #e8f0fb; } .status-출장 .entry-status { color: #2f5aa8; }
+    .status-연차 { background: #fdf2e3; } .status-연차 .entry-status { color: #b8720b; }
     .status-교육 { background: #f2ecfa; } .status-교육 .entry-status { color: #7748b8; }
+    .status-반차 { background: #fbe8f2; } .status-반차 .entry-status { color: #c23a7a; }
     .status-휴무 { background: #f1f1f1; } .status-휴무 .entry-status { color: #888; }
+
+    .legend { display: flex; flex-wrap: wrap; gap: 12px; padding: 12px 4px 4px; font-size: 12px; color: #444; border-top: 1px solid #f0f0f0; margin-top: 8px; }
+    .legend-item { display: flex; align-items: center; gap: 4px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .dot-출근 { background: #2e9e5b; }
+    .dot-출장 { background: #2f5aa8; }
+    .dot-연차 { background: #b8720b; }
+    .dot-교육 { background: #7748b8; }
+    .dot-반차 { background: #c23a7a; }
+    .dot-휴무 { background: #888; }
+
+    .summary { margin: 20px 12px 24px; background: #fff; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); padding: 16px; }
+    .summary h3 { margin: 0 0 12px; font-size: 15px; }
+    .summary-scroll { overflow-x: auto; }
+    .summary table { border-collapse: collapse; width: 100%; font-size: 12px; min-width: 480px; }
+    .summary th, .summary td { border: 1px solid #eee; padding: 8px 6px; text-align: center; white-space: nowrap; }
+    .summary th { background: #f7f7f5; font-weight: 700; }
+    .summary td:first-child, .summary th:first-child { text-align: left; font-weight: 600; }
+
     .install-banner { position: fixed; left: 12px; right: 12px; bottom: 16px; background: #11203f; color: #fff; border-radius: 12px; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 13px; box-shadow: 0 8px 24px rgba(0,0,0,0.25); z-index: 10; }
     @media (max-width: 420px) { .day-cell { min-height: 78px; } .entry-row { font-size: 9px; } }
   </style>
@@ -70,6 +91,7 @@
       <button id="nextMonth" class="nav-btn" aria-label="다음 달">›</button>
     </div>
   </header>
+
   <main class="card">
     <div class="toolbar">
       <span id="statusText" class="status-text">불러오는 중...</span>
@@ -78,6 +100,7 @@
         <button id="saveBtn" class="btn btn-primary">저장</button>
       </div>
     </div>
+
     <div class="weekday-row">
       <span class="weekday sun">일</span>
       <span class="weekday">월</span>
@@ -87,20 +110,54 @@
       <span class="weekday">금</span>
       <span class="weekday sat">토</span>
     </div>
+
     <div id="calendarGrid" class="calendar-grid"></div>
+
+    <div class="legend">
+      <span class="legend-item"><i class="dot dot-출근"></i>출근</span>
+      <span class="legend-item"><i class="dot dot-출장"></i>출장</span>
+      <span class="legend-item"><i class="dot dot-연차"></i>연차</span>
+      <span class="legend-item"><i class="dot dot-교육"></i>교육</span>
+      <span class="legend-item"><i class="dot dot-반차"></i>반차</span>
+      <span class="legend-item"><i class="dot dot-휴무"></i>휴무</span>
+    </div>
   </main>
+
+  <div class="summary">
+    <h3>이달 근무 요약</h3>
+    <div class="summary-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>직원</th>
+            <th>출근</th>
+            <th>출장</th>
+            <th>연차</th>
+            <th>교육</th>
+            <th>반차</th>
+            <th>휴무</th>
+          </tr>
+        </thead>
+        <tbody id="summaryBody"></tbody>
+      </table>
+    </div>
+  </div>
+
   <div id="installBanner" class="install-banner" hidden>
     <span>이 화면을 앱처럼 설치할 수 있어요</span>
     <button id="installBtn" class="btn btn-primary">앱으로 설치하기</button>
     <button id="installDismiss" class="btn-text">닫기</button>
   </div>
+
   <script>
     const GAS_API_URL = "https://script.google.com/macros/s/AKfycbzzmvnHfEQUDdZx3Zsw1x7uKjCMa-0fulRuhzOcgQr2S89PoMFEu-Zq2H7ijt_tVjtV/exec";
     const DEFAULT_EMPLOYEES = ["김선천소장", "손삼영실장", "황인용소장", "공석희실장"];
-    const STATUS_CYCLE = ["출근", "연차", "출장", "교육", "휴무"];
+    const STATUS_CYCLE = ["출근", "출장", "연차", "교육", "반차", "휴무"];
+
     let currentDate = new Date();
     let monthData = {};
     let dirty = false;
+
     const monthLabel = document.getElementById("monthLabel");
     const calendarGrid = document.getElementById("calendarGrid");
     const statusText = document.getElementById("statusText");
@@ -108,18 +165,23 @@
     const mailBtn = document.getElementById("mailBtn");
     const prevBtn = document.getElementById("prevMonth");
     const nextBtn = document.getElementById("nextMonth");
+    const summaryBody = document.getElementById("summaryBody");
+
     function monthKey(date) {
       const y = date.getFullYear();
       const m = String(date.getMonth() + 1).padStart(2, "0");
       return `haemi-schedule:${y}-${m}`;
     }
+
     function defaultDayEntries() {
       return DEFAULT_EMPLOYEES.map((name) => ({ name, status: "출근" }));
     }
+
     async function loadMonth() {
       statusText.textContent = "불러오는 중...";
       statusText.className = "status-text saving";
       saveBtn.disabled = true;
+
       const key = monthKey(currentDate);
       try {
         const res = await fetch(`${GAS_API_URL}?action=get&key=${encodeURIComponent(key)}`);
@@ -137,6 +199,7 @@
         renderCalendar();
       }
     }
+
     async function saveMonth() {
       const key = monthKey(currentDate);
       statusText.textContent = "저장 중...";
@@ -156,43 +219,80 @@
         statusText.className = "status-text error";
       }
     }
+
+    function renderSummary() {
+      const counts = {};
+      DEFAULT_EMPLOYEES.forEach((name) => {
+        counts[name] = {};
+        STATUS_CYCLE.forEach((s) => (counts[name][s] = 0));
+      });
+
+      Object.values(monthData).forEach((entries) => {
+        entries.forEach((e) => {
+          if (counts[e.name] && typeof counts[e.name][e.status] === "number") {
+            counts[e.name][e.status]++;
+          }
+        });
+      });
+
+      summaryBody.innerHTML = "";
+      DEFAULT_EMPLOYEES.forEach((name) => {
+        const row = document.createElement("tr");
+        const cells = [name, ...STATUS_CYCLE.map((s) => counts[name][s])];
+        row.innerHTML = cells.map((c) => `<td>${c}</td>`).join("");
+        summaryBody.appendChild(row);
+      });
+    }
+
     function renderCalendar() {
       const year = currentDate.getFullYear();
       const month = currentDate.getMonth();
       monthLabel.textContent = `${year}년 ${month + 1}월`;
+
       const firstDay = new Date(year, month, 1).getDay();
       const daysInMonth = new Date(year, month + 1, 0).getDate();
       const today = new Date();
+
       calendarGrid.innerHTML = "";
+
       for (let i = 0; i < firstDay; i++) {
         const empty = document.createElement("div");
         empty.className = "day-cell empty";
         calendarGrid.appendChild(empty);
       }
+
       for (let day = 1; day <= daysInMonth; day++) {
         const cell = document.createElement("div");
         const dow = new Date(year, month, day).getDay();
         cell.className = "day-cell";
+
         const isToday = today.getFullYear() === year && today.getMonth() === month && today.getDate() === day;
         if (isToday) cell.classList.add("today");
+
         const numEl = document.createElement("div");
         numEl.className = "day-num" + (dow === 0 ? " sun" : dow === 6 ? " sat" : "");
         numEl.textContent = day;
         cell.appendChild(numEl);
+
         if (!monthData[day]) {
           monthData[day] = defaultDayEntries();
         }
+
         monthData[day].forEach((entry, idx) => {
           const row = document.createElement("div");
           row.className = `entry-row status-${entry.status}`;
+
           const nameEl = document.createElement("span");
           nameEl.className = "entry-name";
           nameEl.textContent = entry.name;
+
           const statusEl = document.createElement("span");
           statusEl.className = "entry-status";
           statusEl.textContent = entry.status;
+
           row.appendChild(nameEl);
           row.appendChild(statusEl);
+
           row.addEventListener("click", () => {
             const curIdx = STATUS_CYCLE.indexOf(entry.status);
             const nextStatus = STATUS_CYCLE[(curIdx + 1) % STATUS_CYCLE.length];
@@ -202,11 +302,16 @@
             statusText.className = "status-text saving";
             renderCalendar();
           });
+
           cell.appendChild(row);
         });
+
         calendarGrid.appendChild(cell);
       }
+
+      renderSummary();
     }
+
     prevBtn.addEventListener("click", () => {
       currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1);
       loadMonth();
@@ -216,6 +321,7 @@
       loadMonth();
     });
     saveBtn.addEventListener("click", saveMonth);
+
     mailBtn.addEventListener("click", () => {
       const subject = encodeURIComponent(`${monthLabel.textContent} 근무계획표`);
       const body = encodeURIComponent(
@@ -225,19 +331,24 @@
       );
       window.location.href = `mailto:?subject=${subject}&body=${body}`;
     });
+
     window.addEventListener("beforeunload", (e) => {
       if (dirty) { e.preventDefault(); e.returnValue = ""; }
     });
+
     loadMonth();
+
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
         navigator.serviceWorker.register("./service-worker.js").catch(console.error);
       });
     }
+
     let deferredPrompt = null;
     const installBanner = document.getElementById("installBanner");
     const installBtn = document.getElementById("installBtn");
     const installDismiss = document.getElementById("installDismiss");
+
     window.addEventListener("beforeinstallprompt", (e) => {
       e.preventDefault();
       deferredPrompt = e;
